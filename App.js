@@ -8,7 +8,7 @@ const navigator = createStackNavigator({
     All: AllStoriesScreen,
   },
   {
-    initialRouteName: "All",
+    initialRouteName: "Main",
     defaultNavigationOptions: {
       title: "Read a Story",
     },

@@ -15,11 +15,8 @@ const AllStoriesScreen = () => {
       const querySnapshot = await getDocs(collection(db, 'allstories'));
 
       const storiesArray = [];
-      querySnapshot.forEach(doc => {
-        storiesArray.push({
-          ...doc.data(),
-          id: doc.id,
-        });
+      querySnapshot.forEach(doc => { 
+        storiesArray.push({...doc.data(), id: doc.id, });
       });
 
       setStories(storiesArray);

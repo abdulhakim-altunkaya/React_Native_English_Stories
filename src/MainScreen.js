@@ -1,36 +1,36 @@
 import { View, Text, Button, TextInput, FlatList, 
-  TouchableOpacity, StyleSheet} from 'react-native'
+  TouchableOpacity, StyleSheet} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import GlossyButton from './GlossyButton';
-import {FIREBASE_DB} from "../res/firebaseConfig";
-
-import { addDoc, collection, deleteDoc, updateDoc, onSnapshot, doc, query, getDocs } from 'firebase/firestore';
-
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+//if you initililize firebse app aaat aany place in your app,
+//then you dont need to import the file, getFirestore will handle it.
+import {FIREBASE_DB} from "../firebaseConfig";
 
 
 const MainScreen = () => {
-  
-  const [stories, setStories] = useState([]);
+  const [stories, setStories] = useState([]); 
 
   useEffect(() => {
-    const fetchDoc = async () => {
-      const q = query(collection(FIREBASE_DB, "allstories"));
-      const querySnapshot = await getDocs(q);
+    const fetchDocs = async () => {
+      const db = getFirestore();
+      const querySnapshot = await getDocs(collection(db, "allstories"));
       const storiesArray = [];
-      querySnapshot.forEach((doc) => {
-        storiesArray.push({ firestoreId: doc.id, ...doc.data()});
+      //here I m opening an storyid field for ech doc
+      querySnapshot.forEach(doc  => {
+        storiesArray.push({...doc.data(), storyId: doc.id, });
       });
       setStories(storiesArray);
-      console.log(stories);
     }
-    fetchDoc();
+    fetchDocs();
   }, [])
   
   let[num, setNum] = useState("");
   const getRandomNum = () => {
-    setNum(Math.floor(Math.random() * 21));
-
+    setNum(Math.floor(Math.random() * stories.length));
   }
+
+
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -39,7 +39,7 @@ const MainScreen = () => {
         onPress={getRandomNum}
       />
       <View>
-        <Text></Text>
+        <Text>{num}</Text>
       </View>
     </View>
   )
