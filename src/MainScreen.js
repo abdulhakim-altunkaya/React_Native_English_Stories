@@ -40,7 +40,7 @@ const MainScreen = () => {
 
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.mainDiv} >
       <GlossyButton
         title="Bring a Story"
         onPress={getRandomNum}
@@ -56,13 +56,20 @@ const MainScreen = () => {
 }
 
 const styles = StyleSheet.create({
+  mainDiv: {
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    margin: 15,
+  },
   container: {
     padding: 16,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 10,
+    marginTop: 20,
     textAlign: 'center',
   },
   paragraph: {

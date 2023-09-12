@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     overflow: 'hidden',
     borderRadius: 30,
+    
   },
   gradientBackground: {
     padding: 15,
