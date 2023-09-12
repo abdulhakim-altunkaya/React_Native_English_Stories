@@ -10,6 +10,12 @@ import {FIREBASE_DB} from "../firebaseConfig";
 
 const MainScreen = () => {
   const [stories, setStories] = useState([]); 
+  let [num, setNum] = useState("");
+  let [storyDoc, setStoryDoc] = useState("");
+  let [titleDoc, setTitleDoc] = useState("");
+  let [word1Doc, setWord1Doc] = useState("");
+  let [word2Doc, setWord2Doc] = useState("");
+  let [word3Doc, setWord3Doc] = useState("");
 
   useEffect(() => {
     const fetchDocs = async () => {
@@ -25,9 +31,10 @@ const MainScreen = () => {
     fetchDocs();
   }, [])
   
-  let[num, setNum] = useState("");
   const getRandomNum = () => {
-    setNum(Math.floor(Math.random() * stories.length));
+    let randomNum = Math.floor(Math.random() * stories.length);
+    setTitleDoc(stories[randomNum].title);
+    setStoryDoc(stories[randomNum].text);
   }
 
 
@@ -39,10 +46,28 @@ const MainScreen = () => {
         onPress={getRandomNum}
       />
       <View>
-        <Text>{num}</Text>
+        <Text style={styles.title}>
+          {titleDoc}
+        </Text>
+        <Text>{storyDoc}</Text>
       </View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  paragraph: {
+    marginBottom: 16,
+  }
+});
 
 export default MainScreen
