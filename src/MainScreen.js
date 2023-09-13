@@ -6,6 +6,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 //if you initililize firebse app aaat aany place in your app,
 //then you dont need to import the file, getFirestore will handle it.
 import {FIREBASE_DB} from "../firebaseConfig";
+import { AntDesign } from '@expo/vector-icons'; 
 
 
 const MainScreen = () => {
@@ -16,6 +17,7 @@ const MainScreen = () => {
   let [word1Doc, setWord1Doc] = useState("");
   let [word2Doc, setWord2Doc] = useState("");
   let [word3Doc, setWord3Doc] = useState("");
+  let [displayIcon, setDisplayIcon] = useState(false);
 
   useEffect(() => {
     const fetchDocs = async () => {
@@ -35,6 +37,10 @@ const MainScreen = () => {
     let randomNum = Math.floor(Math.random() * stories.length);
     setTitleDoc(stories[randomNum].title);
     setStoryDoc(stories[randomNum].text);
+    setDisplayIcon(true);
+    setWord1Doc(stories[randomNum].word1);
+    setWord2Doc(stories[randomNum].word2);
+    setWord3Doc(stories[randomNum].word3);
   }
 
 
@@ -45,11 +51,23 @@ const MainScreen = () => {
         title="Bring a Story"
         onPress={getRandomNum}
       />
-      <View>
+      <View> 
         <Text style={styles.title}>
           {titleDoc}
         </Text>
         <Text>{storyDoc}</Text>
+        {
+          displayIcon === true ?
+            <View style={styles.iconDiv}>
+              <AntDesign name="API" size={42} color="black" />
+            </View>
+          :
+            <></>
+        }
+        <Text style={styles.wordsArea}>{word1Doc}</Text>
+
+        <Text>{word2Doc}</Text>
+        <Text>{word3Doc}</Text>
       </View>
     </View>
   )
@@ -72,8 +90,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
   },
-  paragraph: {
-    marginBottom: 16,
+  iconDiv: {
+    margin: "auto",
+    width: "20%",
+    marginBottom: 8,
+    marginTop: 10,
+  },
+  wordsArea: {
+    marginBottom: 7,
   }
 });
 
