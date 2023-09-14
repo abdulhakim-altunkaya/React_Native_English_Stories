@@ -64,10 +64,18 @@ const MainScreen = () => {
           :
             <></>
         }
-        <Text style={styles.wordsArea}>{word1Doc}</Text>
-
-        <Text>{word2Doc}</Text>
-        <Text>{word3Doc}</Text>
+        <View style={styles.wordsArea}>
+          <Text style={styles.wordTitle}>{word1Doc.split(":")[0]}</Text>
+          <Text>{word1Doc.split(":")[1]}</Text>
+        </View>
+        <View style={styles.wordsArea}>
+          <Text style={styles.wordTitle}>{word2Doc.split(":")[0]}</Text>
+          <Text>{word2Doc.split(":")[1]}</Text>
+        </View>
+        <View style={styles.wordsArea}>
+          <Text style={styles.wordTitle}>{word3Doc.split(":")[0]}</Text>
+          <Text>{word3Doc.split(":")[1]}</Text>
+        </View> 
       </View>
     </View>
   )
@@ -98,7 +106,13 @@ const styles = StyleSheet.create({
   },
   wordsArea: {
     marginBottom: 7,
+    display: "flex",
+    flexDirection: "row",
+  },
+  wordTitle: {
+    fontWeight: "bold",
   }
 });
 
-export default MainScreen
+export default MainScreen;
+
