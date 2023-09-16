@@ -2,7 +2,7 @@
 
 Welcome to **Weird Stories**—a unique collection of tales so peculiar they defy the ordinary. Dive deep into eerie realms and meet creatures and events that go beyond the mundane. Crafted for adventurous souls, night owls, and cerebral thinkers.
 
-![Weird Stories App Screenshot](path/to/screenshot.png) <!-- replace with the actual path to your screenshot -->
+![Weird Stories App Screenshot](assets/screenshot.png)
 
 ## Features 🌟
 
@@ -26,13 +26,11 @@ Welcome to **Weird Stories**—a unique collection of tales so peculiar they def
 ## Installation 📲
 
 ```bash
-git clone [your-repo-link]
+git clone https://github.com/abdulhakim-altunkaya/react_native_english_stories.git
 cd WeirdStories
 npm install
 npm start
 ```
-
-Replace `[your-repo-link]` with your repository's URL.
 
 ## Contributing 🤝
 
