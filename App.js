@@ -11,7 +11,7 @@ const navigator = createStackNavigator({
   {
     initialRouteName: "Main",
     defaultNavigationOptions: {
-      title: "Read a Story",
+      title: "WELCOME TO WEIRD STORIES",
     },
   }
 );
