@@ -1,0 +1,9 @@
+{
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "lang": "en",
+  "name": "react_native_english_stories",
+  "short_name": "react_native_english_stories",
+  "start_url": "/?utm_source=web_app_manifest",
+  "orientation": "portrait"
+}
