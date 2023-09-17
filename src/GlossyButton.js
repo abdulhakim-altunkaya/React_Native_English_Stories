@@ -13,7 +13,7 @@ const GlossyButton = ({ onPress, title }) => (
 const styles = StyleSheet.create({
   buttonContainer: {
     overflow: 'hidden',
-    borderRadius: 32,
+    borderRadius: 31,
     
   },
   gradientBackground: {
